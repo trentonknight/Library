@@ -27,6 +27,7 @@ public class Main {
         b.setId(text);
         boolean validate = b.validate();
         System.out.println(b.getId());
+        
     }
 
 }

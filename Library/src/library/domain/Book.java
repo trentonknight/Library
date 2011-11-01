@@ -11,4 +11,8 @@ package library.domain;
  */
 public class Book extends Item{
 
+  private String isbn;
+  public String getIsbn(){
+      return isbn;
+  }
 }
