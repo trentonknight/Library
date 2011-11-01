@@ -33,6 +33,15 @@ public class Item {
  public void setTitle(String title){
      this.title = title;
  }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 17 * hash + (this.id != null ? this.id.hashCode() : 0);
+        hash = 17 * hash + (this.title != null ? this.title.hashCode() : 0);
+        return hash;
+    }
+ 
         public boolean equals(Object obj){
             if (this == obj) return true;
             if (! (obj instanceof Item)) return false;
