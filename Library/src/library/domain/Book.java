@@ -9,6 +9,6 @@ package library.domain;
  *
  * @author trentonknight
  */
-public class Book {
+public class Book extends Item{
 
 }
