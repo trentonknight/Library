@@ -16,12 +16,7 @@ public class Item {
         id = null;
         title = null;
     }
-    
-    public Item(String id, String title){
-        this.id = id;
-        this.title = title;
-    }
-    public String getId(){
+ public String getId(){
         return id;
     }
  public void setId(String id){

@@ -14,23 +14,25 @@ import java.io.*;
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) throws IOException {
-        String newone;
-           
-        Item b = new Item();
+ 
         Book book = new Book();
         
-        System.out.println("Enter ID");
+        /** From Item Class and called from extended Book Class*/
+        System.out.println("Enter User ID");
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String text = in.readLine();
-        b.setId(text);
-        boolean validate = b.validate();
-        System.out.println(b.getId());
-        book.getIsbn();
+        book.setId(text);
         
+        /**Called from Book Class*/
+        System.out.println("Enter Book ISBN");
+        BufferedReader isbn = new BufferedReader(new InputStreamReader(System.in));
+        String newtext = isbn.readLine();
+        book.setIsbn(newtext);
+        System.out.println("The Book ISBN is " + book.getIsbn()); 
+        
+        boolean validate = book.validate();
     }
 
 }
