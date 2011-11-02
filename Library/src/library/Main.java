@@ -4,7 +4,7 @@
  */
 
 package library;
-import library.domain.Item;
+import library.domain.*;
 import java.io.*;
 
 
@@ -21,12 +21,15 @@ public class Main {
         String newone;
            
         Item b = new Item();
+        Book book = new Book();
+        
         System.out.println("Enter ID");
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String text = in.readLine();
         b.setId(text);
         boolean validate = b.validate();
         System.out.println(b.getId());
+        book.getIsbn();
         
     }
 
