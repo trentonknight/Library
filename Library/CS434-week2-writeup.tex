@@ -1,0 +1,113 @@
+\documentclass[11pt,a4paper]{article}
+% Generated with LaTeXDraw 2.0.8
+% Sat Nov 05 14:57:05 EDT 2011
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage[light,math]{iwona}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepgflibrary{arrows}
+\usetikzlibrary{calc,shapes,arrows,automata,trees,shadows,decorations.pathmorphing,positioning, shapes.misc,shapes.arrows,chains,matrix,scopes,decorations.pathmorphing,backgrounds,fit}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+\tikzstyle{abstract}=[rectangle, draw=black, rounded corners, fill=blue!80!green!80, drop shadow,
+        text centered, anchor=north, text=white, text width=3cm]
+\tikzstyle{comment}=[rectangle, draw=black, rounded corners, fill=red!50!brown!70, drop shadow,
+        text centered, anchor=north, text=white, text width=3cm]
+\tikzstyle{myarrow}=[draw, -latex]
+\tikzstyle{line} = [draw, -open triangle 90]
+\tikzstyle{mybox} = [draw=red, fill=blue!20, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{library} =[fill=black!20, text=white]
+\tikzstyle{tab1} =[rounded corners, fill=black!30, text=white]
+\tikzstyle basiclabel=[draw=none,fill=none,shape=rectangle,inner sep=2pt,scale=.8]
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+%
+\begin{titlepage}
+\begin{center}
+% Upper part of the page
+
+
+\textsc{\color{Sepia}{\LARGE CS~434}}\\[1.5cm]
+\textsc{\Large Week~Two}\\[0.5cm]
+
+
+%begin UML
+\begin{tikzpicture}[every label/.style={red}]
+
+ \node (main) [comment, rectangle split, rectangle split parts=2]
+        {
+            \textbf{Main.java}
+            \nodepart{second}+userID:String[*]\\+isbn:String[*]\\+title:String[*]
+        };
+
+\node (item) [abstract, rectangle split, rectangle split parts=2, below=4cm]
+        {
+            \textbf{Item.java}
+            \nodepart{second}+setID:String[*]\\+setTitle:String[*]\\+getID:String[*]\\+getTitle:String[*]
+        };
+\node (book) [abstract, rectangle split, rectangle split parts=2, below=9cm]
+        {
+            \textbf{Book.java}
+            \nodepart{second}+setIsbn:String[*]\\+getIsbn:String[*]
+        };
+\path [line,dashed](book) -- node(ext)[right]{\textless \textless extend\textgreater\textgreater} (item);
+\path [myarrow](main) -- node(ext)[right](-1,-2) {\textless \textless include\textgreater\textgreater} (item);
+%background
+\begin{pgfonlayer}{background}
+%library
+\node(lib1)[fill=yellow!40!brown!80, fit=(main)]{};
+\node[tab1,above left,fill=yellow!40!brown!80] at (lib1.north){library};
+%library.domain
+\node(lib2)[fill=orange!40!brown!90, fit=(item) (book)]{};
+\node[tab1, above,fill=orange!40!brown!90,rotate=90] at (lib2.west){library.domain};
+\end{pgfonlayer}
+\end{tikzpicture}
+%end UML
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Book Case}\\[0.4cm]
+{ \huge \bfseries Write Up}\\[0.4cm]
+\HRule \\[1.5cm]
+
+
+% Author and supervisor
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Jason \textsc{Mansfield}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Instructor:} \\
+Hong \textsc{Zhu}
+\end{flushright}
+\end{minipage}
+\vfill
+% Bottom of the page
+{\large \today}
+\end{center}
+\end{titlepage}
+\tableofcontents
+\section{library package}
+\subsection{Main}
+Main provides to most basic calls to the library.domain package which performs all the set, get, and validate functions.
+\subsection{MainTest}
+Runs a generic test on the main class.
+\section{library.domain package}
+\subsection{Item}
+This class handles retrieving Id and Title data. Another words it handles both the get and set functions for both ID and Title and handles validation of both.
+\subsection{Book}
+The Book class is an extension of the Item Class which handles the needed ISBN data similarly.
+\subsection{ItemTest}
+Asserts all calls made from Class Item.
+\subsection{BookTest}
+Asserts all calls made from Class Book.
+\end{document}
