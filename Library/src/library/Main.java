@@ -36,7 +36,7 @@ public class Main {
         System.out.println("Enter Authors Name");
         BufferedReader author = new BufferedReader(new InputStreamReader(System.in));
         String name = author.readLine();
-        
+        book.addAuthor(name);
         
         boolean validate = book.validate();
     }

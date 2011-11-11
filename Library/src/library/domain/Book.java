@@ -4,48 +4,27 @@
  */
 
 package library.domain;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author trentonknight
  */
 public class Book extends Item{
-
-  private String isbn;
-  private List <String> bookAuthor = new LinkedList<String>();
+    
+private String name;
   
   public Book(){
-        isbn = null;
+        name = null;
     }
-  
-  /*public void setIsbn(String isbn){
-     this.isbn = isbn;
- }
-  public String getIsbn(){
-      return isbn;
-  }
-   * */
-   
-  public interface Collection<E> extends Iterable<E>{
-      
-  }
- 
- 
-    @Override
-  public boolean equals(Object obj){
-            if (this == obj) return true;
-            if (! (obj instanceof Book)) return false;
-            Book book = (Book)obj;
-            if (this.getId().equals(book.isbn)) return false;
-            if (! this.isbn.equals(book.isbn)) return false;
-            return true;
-        }
+    
+List<String> author = new ArrayList<String>();
+    
 
 
-   
-    @Override
-        public boolean validate(){
-            if (isbn == null || isbn.equals("")) return false;
-            return true;
-        }
+public void addAuthor(String name){
+        boolean add = author.add(name);
+}
+
+
 }
