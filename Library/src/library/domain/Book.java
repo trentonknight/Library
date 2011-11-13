@@ -15,6 +15,7 @@ public class Book extends Item {
     private String name;
     private String title;
     private String isbn;
+    private int num;
     
     List<String> author = new ArrayList<String>();
    
@@ -23,6 +24,7 @@ public class Book extends Item {
         name = null;
         title = null;
         isbn = null;
+        num = 0;
     }
 
     public void setTitle(String title) {
@@ -44,8 +46,8 @@ public class Book extends Item {
     public void addAuthor(String name) {
         boolean add = author.add(name);
     }
-    public String getAuthor(){
-       return author.get(0);
+    public String getAuthor(int num){
+       return author.get(num);
     }
     //*begin testing equivalence**//
      @Override
@@ -84,7 +86,7 @@ public class Book extends Item {
          if (name == null || name.equals("")) {
             return false;
         }
-        if(author.get(0)== null || author.get(0).equals("")){
+        if(author.get(num)== null || author.get(num).equals("")){
             return false;
         }
         return true;
