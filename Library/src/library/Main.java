@@ -33,6 +33,7 @@ public class Main {
         BufferedReader author = new BufferedReader(new InputStreamReader(System.in));
         String name = author.readLine();
         book.addAuthor(name);
+        System.out.println("The Authors name is " + book.getAuthor());
 
         boolean validate = book.validate();
     }

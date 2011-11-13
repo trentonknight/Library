@@ -12,11 +12,12 @@ import java.util.List;
  * @author trentonknight
  */
 public class Book extends Item {
-
-    List<String> author = new ArrayList<String>();
     private String name;
     private String title;
     private String isbn;
+    
+    List<String> author = new ArrayList<String>();
+   
 
     public Book() {
         name = null;
@@ -42,5 +43,50 @@ public class Book extends Item {
 
     public void addAuthor(String name) {
         boolean add = author.add(name);
+    }
+    public String getAuthor(){
+       return author.get(0);
+    }
+    //*begin testing equivalence**//
+     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Item)) {
+            return false;
+        }
+        Book book = (Book) obj;
+        if (this.getId().equals(book.getId())) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 43 * hash + (this.name != null ? this.name.hashCode() : 0);
+        hash = 43 * hash + (this.title != null ? this.title.hashCode() : 0);
+        hash = 43 * hash + (this.isbn != null ? this.isbn.hashCode() : 0);
+        hash = 43 * hash + (this.author != null ? this.author.hashCode() : 0);
+        return hash;
+    }
+    //*validate*//
+    @Override
+     public boolean validate() {
+        if (isbn == null || isbn.equals("")) {
+            return false;
+        }
+         if (title == null || title.equals("")) {
+            return false;
+        }
+         if (name == null || name.equals("")) {
+            return false;
+        }
+        if(author.get(0)== null || author.get(0).equals("")){
+            return false;
+        }
+        return true;
     }
 }
